@@ -132,8 +132,8 @@ Kotlin/Wasm ↔ JS (ninguno documentado claramente en la documentación oficial 
   el código; es la única red de seguridad que falta dado que los bugs de esta sesión (ArrayBuffer
   vs Uint8Array, `@JsModule` default export) son justo el tipo de cosa que un vector conocido
   habría detectado en CI en vez de a mano en el popup.
-- `browserExtension` v2: editar/borrar items, content scripts para autofill en páginas web,
-  export/import, passkeys — v1 sólo tiene alta, listado y ver/copiar contraseña.
+- `browserExtension` v2: content scripts para autofill en páginas web, export/import, passkeys —
+  editar/borrar de logins ya implementado (ver commit `623eeaf`), sigue faltando lo demás.
 - Sync entre dispositivos: esquema de datos ya preparado, sin protocolo ni servidor.
 - Autofill en apps nativas: sólo heurística de nombre de paquete en v1, sin base de datos de
   hashes de certificado esperados por dominio (ver `THREAT_MODEL.md`).
