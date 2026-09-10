@@ -17,6 +17,8 @@
     .pw-row { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
     .pw-row span { font-family: monospace; flex: 1; overflow: hidden; text-overflow: ellipsis; }
     .pw-row button { width: auto; padding: 2px 8px; margin: 0; font-size: 12px; }
+    .item-actions { display: flex; gap: 6px; margin-top: 4px; }
+    .item-actions button { width: auto; padding: 2px 8px; margin: 0; font-size: 12px; }
   </style>
 </head>
 <body>
@@ -45,6 +47,7 @@
     <input id="new-username" type="text" placeholder="Usuario" />
     <input id="new-password" type="text" placeholder="Contraseña" />
     <button id="new-submit">Añadir login</button>
+    <button id="new-cancel" class="hidden">Cancelar edición</button>
   </section>
 
   <script src="passwrd.js"></script>

@@ -14,6 +14,7 @@ private fun jsSetTextContent(el: JsAny, text: String): Unit = js("el.textContent
 private fun jsSetInnerHtml(el: JsAny, html: String): Unit = js("el.innerHTML = html")
 private fun jsAddClickListener(el: JsAny, handler: () -> Unit): Unit = js("el.addEventListener('click', function() { handler(); })")
 private fun jsCopyToClipboard(text: String): Unit = js("navigator.clipboard.writeText(text)")
+private fun jsConfirm(message: String): Boolean = js("window.confirm(message)")
 
 internal fun byId(id: String): JsAny = requireNotNull(jsGetElementById(id)) { "no existe #$id en popup.html" }
 
@@ -29,6 +30,8 @@ internal fun setHtml(id: String, html: String) = jsSetInnerHtml(byId(id), html)
 internal fun onClick(id: String, handler: () -> Unit) = jsAddClickListener(byId(id), handler)
 
 internal fun copyToClipboard(text: String) = jsCopyToClipboard(text)
+
+internal fun confirmAction(message: String): Boolean = jsConfirm(message)
 
 /** Escapa lo mínimo para no romper el HTML al listar nombres/usuarios de items. */
 internal fun escapeHtml(text: String): String = text
