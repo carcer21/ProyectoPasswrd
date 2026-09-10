@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    El filtrado real de tipos soportados (password / passkey) lo hace
+    PasswrdCredentialProviderService en código, no este fichero — sólo hace falta que
+    exista y sea un <credential-provider> válido para que el manifest linkee.
+-->
+<credential-provider xmlns:android="http://schemas.android.com/apk/res/android" />

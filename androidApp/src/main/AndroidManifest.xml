@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        Sin permiso INTERNET. Ver docs/CRYPTO_SPEC.md sección 6 y docs/THREAT_MODEL.md:
+        es la propiedad más fuerte y auditable del proyecto — no la añadas sin discutirlo primero.
+    -->
+
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+
+    <application
+        android:name=".PasswrdApplication"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:theme="@android:style/Theme.Material.Light.NoActionBar"
+        tools:targetApi="34">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".autofill.PasswrdAutofillService"
+            android:permission="android.permission.BIND_AUTOFILL_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.autofill.AutofillService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.autofill"
+                android:resource="@xml/autofill_service" />
+        </service>
+
+        <activity
+            android:name=".credentials.CredentialAuthActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
+
+        <service
+            android:name=".credentials.PasswrdCredentialProviderService"
+            android:permission="android.permission.BIND_CREDENTIAL_PROVIDER_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.credentials.CredentialProviderService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.credentials.provider"
+                android:resource="@xml/provider" />
+        </service>
+
+    </application>
+
+</manifest>

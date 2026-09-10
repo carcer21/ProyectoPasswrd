@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Passwrd",
+  "version": "0.1.0",
+  "description": "Gestor de contraseñas local, sin servidor, de conocimiento cero.",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  }
+}

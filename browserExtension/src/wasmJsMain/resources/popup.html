@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Passwrd</title>
+  <style>
+    body { font-family: system-ui, sans-serif; width: 320px; padding: 16px; }
+    h1 { font-size: 16px; margin: 0 0 12px; }
+    input { width: 100%; box-sizing: border-box; padding: 6px; margin-bottom: 8px; }
+    button { width: 100%; padding: 8px; margin-bottom: 4px; cursor: pointer; }
+    .hidden { display: none; }
+    .error { color: #b00020; font-size: 12px; }
+    #item-list { list-style: none; padding: 0; margin: 0; }
+    #item-list li { padding: 6px 0; border-bottom: 1px solid #eee; }
+    #item-list li .name { font-weight: 600; }
+    #item-list li .user { color: #666; font-size: 12px; }
+    .pw-row { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
+    .pw-row span { font-family: monospace; flex: 1; overflow: hidden; text-overflow: ellipsis; }
+    .pw-row button { width: auto; padding: 2px 8px; margin: 0; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h1>Passwrd</h1>
+
+  <section id="screen-onboarding" class="hidden">
+    <p>Crea tu contraseña maestra. No se guarda en ningún sitio y no hay forma de recuperarla si la olvidas.</p>
+    <input id="onboarding-password" type="password" placeholder="Contraseña maestra" />
+    <input id="onboarding-confirm" type="password" placeholder="Repite la contraseña" />
+    <div id="onboarding-error" class="error hidden"></div>
+    <button id="onboarding-submit">Crear vault</button>
+  </section>
+
+  <section id="screen-unlock" class="hidden">
+    <p>Vault bloqueado.</p>
+    <input id="unlock-password" type="password" placeholder="Contraseña maestra" />
+    <div id="unlock-error" class="error hidden">Contraseña incorrecta</div>
+    <button id="unlock-submit">Desbloquear</button>
+  </section>
+
+  <section id="screen-list" class="hidden">
+    <ul id="item-list"></ul>
+    <button id="list-lock">Bloquear</button>
+    <hr />
+    <input id="new-name" type="text" placeholder="Nombre" />
+    <input id="new-username" type="text" placeholder="Usuario" />
+    <input id="new-password" type="text" placeholder="Contraseña" />
+    <button id="new-submit">Añadir login</button>
+  </section>
+
+  <script src="passwrd.js"></script>
+</body>
+</html>

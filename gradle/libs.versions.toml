@@ -1,0 +1,52 @@
+[versions]
+# Fijado siguiendo la nota de riesgos del plan (docs/CRYPTO_SPEC.md / README):
+# AGP 9 rompe el bloque androidTarget de KMP. Nos quedamos en AGP 8.x + Kotlin 2.3.10+
+# hasta migrar a com.android.kotlin.multiplatform.library.
+agp = "8.13.2"
+kotlin = "2.3.10"
+ksp = "2.3.10"
+compose-plugin = "1.11.1"
+compose-bom = "2026.06.01"
+androidx-activity = "1.10.1"
+androidx-lifecycle = "2.9.0"
+room = "2.7.0"
+sqlite = "2.5.0"
+bouncycastle = "1.85.2"
+coroutines = "1.10.1"
+serialization = "1.8.0"
+biometric = "1.2.0-alpha05"
+credentials = "1.6.0"
+security-crypto = "1.1.0-alpha06"
+
+android-compileSdk = "36"
+android-targetSdk = "36"
+android-minSdk = "26"
+
+[libraries]
+bouncycastle-bcprov = { module = "org.bouncycastle:bcprov-jdk18on", version.ref = "bouncycastle" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+androidx-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
+
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
+androidx-biometric = { module = "androidx.biometric:biometric", version.ref = "biometric" }
+androidx-credentials = { module = "androidx.credentials:credentials", version.ref = "credentials" }
+androidx-credentials-play-services-auth = { module = "androidx.credentials:credentials-play-services-auth", version.ref = "credentials" }
+androidx-security-crypto = { module = "androidx.security:security-crypto", version.ref = "security-crypto" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+room = { id = "androidx.room", version.ref = "room" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

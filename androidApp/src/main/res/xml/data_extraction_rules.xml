@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Vacío a propósito: nada sale por Auto Backup ni por Transferencia de dispositivo. -->
+<data-extraction-rules>
+    <cloud-backup disableIfNoEncryptionCapability="true" />
+    <device-transfer />
+</data-extraction-rules>
