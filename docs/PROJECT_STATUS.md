@@ -50,8 +50,9 @@ ProyectoPasswrd/
 
 ## Verificación realizada
 
-- CI en GitHub Actions (`.github/workflows/ci.yml`): `:core:jvmTest` + `:core:testDebugUnitTest` en
-  cada push/PR a `master`.
+- CI en GitHub Actions (`.github/workflows/ci.yml`): `:core:jvmTest` en cada push/PR a `master`
+  (Android SDK instalado manualmente en el runner; `androidApp` no tiene tests propios que
+  `testDebugUnitTest` no cubra ya vía `commonTest`, así que CI se queda en jvmTest).
 - `./gradlew :core:allTests` — verde (vectores Argon2id, AES-GCM, round-trips de vault).
 - `./gradlew :androidApp:assembleRelease` — verde, R8/minify activo.
 - `aapt dump permissions` sobre el APK release: sin `INTERNET`.
@@ -62,6 +63,21 @@ ProyectoPasswrd/
   inspección de la DB con `sqlite3` (campos cifrados opacos), autofill en Chrome y app nativa
   (caso negativo de dominio no coincidente probado), passkey contra webauthn.io, export/import
   ida y vuelta.
+- Sesión 2026-09-17 en emulador (`passwrd_test`, API 34): crear vault, crear 3 logins, abrir el
+  detalle de cada uno para editar. Encontró un bug real — ver abajo.
+
+### Bug encontrado y arreglado: editar item cargaba el formulario vacío
+
+`MainActivity.kt` navega entre pantallas a mano (comentario explícito: "sin Navigation-Compose,
+la app tiene 5 pantallas, no hace falta"). El `viewModel(factory = ...)` de `ItemEditViewModel` no
+llevaba `key`, así que Compose cacheaba **la misma instancia** de ViewModel en cada visita a
+`Screen.Edit(itemId)`, sin importar qué `itemId` llegara. La primera vez que se abría la pantalla
+(al crear un item nuevo, `itemId = null`) quedaba esa instancia fijada para siempre — abrir
+cualquier item existente después reutilizaba esa instancia vieja con `itemId = null` en vez de
+cargar el item real, y el formulario aparecía vacío. Reproducido con dos items distintos en el
+emulador, confirmado por código, arreglado con `viewModel(key = current.itemId ?: "new", ...)` y
+reverificado en el mismo emulador con los mismos items. No se detectó antes porque el flujo de
+prueba manual siempre creaba un item y lo dejaba así, sin volver a abrirlo para editar.
 
 ## desktopApp (Fase 9a)
 
