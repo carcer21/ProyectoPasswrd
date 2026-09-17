@@ -111,6 +111,7 @@ class MainActivity : FragmentActivity() {
                                 }
                                 is Screen.Edit -> {
                                     val editViewModel: ItemEditViewModel = viewModel(
+                                        key = current.itemId ?: "new",
                                         factory = ItemEditViewModel.factory(container.vaultRepository, current.itemId),
                                     )
                                     ItemEditScreen(
