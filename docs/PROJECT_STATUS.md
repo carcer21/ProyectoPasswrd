@@ -46,7 +46,7 @@ ProyectoPasswrd/
 | 7 | Export/import cifrado + importadores Bitwarden/Proton/CSV | ✅ round-trip sin pérdida |
 | 8 | Endurecimiento: R8, sin INTERNET, sin backup, sin logs, ADRs | ✅ auditado en APK release |
 | 9a | `desktopApp` (Compose Multiplatform JVM) | ✅ v1 funcional, probado en local |
-| 9b | `browserExtension` (Kotlin/Wasm + MV3) | ✅ probado en Chrome real: crear vault, listar, ver/copiar contraseña |
+| 9b | `browserExtension` (Kotlin/Wasm + MV3) | ✅ probado en navegador real: crear vault, listar, ver/copiar, editar y borrar login |
 
 ## Verificación realizada
 
@@ -135,7 +135,8 @@ Kotlin/Wasm ↔ JS (ninguno documentado claramente en la documentación oficial 
   vs Uint8Array, `@JsModule` default export) son justo el tipo de cosa que un vector conocido
   habría detectado en CI en vez de a mano en el popup.
 - `browserExtension` v2: content scripts para autofill en páginas web, export/import, passkeys —
-  editar/borrar de logins ya implementado (ver commit `623eeaf`), sigue faltando lo demás.
+  crear/listar/ver/copiar/editar/borrar ya implementado y probado en navegador real, sigue
+  faltando lo demás.
 - Sync entre dispositivos: esquema de datos ya preparado, sin protocolo ni servidor.
 - Autofill en apps nativas: sólo heurística de nombre de paquete en v1, sin base de datos de
   hashes de certificado esperados por dominio (ver `THREAT_MODEL.md`).

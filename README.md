@@ -26,6 +26,8 @@ un error en la jerarquía de claves de un gestor de contraseñas no se parchea d
 - **App de escritorio** (Compose Multiplatform / JVM) y **extensión de navegador** (MV3 +
   Kotlin/Wasm) que reutilizan el mismo núcleo `:core` sin reescribir una sola línea de cripto.
 
+<img src="docs/screenshots/desktopapp-unlock.png" alt="Passwrd desktopApp — pantalla de desbloqueo" width="500">
+
 ## Arquitectura
 
 ```
