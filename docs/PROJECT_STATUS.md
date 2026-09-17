@@ -50,6 +50,8 @@ ProyectoPasswrd/
 
 ## Verificación realizada
 
+- CI en GitHub Actions (`.github/workflows/ci.yml`): `:core:jvmTest` + `:core:testDebugUnitTest` en
+  cada push/PR a `master`.
 - `./gradlew :core:allTests` — verde (vectores Argon2id, AES-GCM, round-trips de vault).
 - `./gradlew :androidApp:assembleRelease` — verde, R8/minify activo.
 - `aapt dump permissions` sobre el APK release: sin `INTERNET`.

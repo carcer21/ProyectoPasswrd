@@ -1,5 +1,8 @@
 # Passwrd
 
+[![CI](https://github.com/carcer21/ProyectoPasswrd/actions/workflows/ci.yml/badge.svg)](https://github.com/carcer21/ProyectoPasswrd/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Gestor de contraseñas local, sin servidor y de conocimiento cero (*zero-knowledge*). Android
 primero, con un núcleo criptográfico en Kotlin Multiplatform reutilizado tal cual en una app de
 escritorio y una extensión de navegador.
